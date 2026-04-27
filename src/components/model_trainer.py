@@ -30,21 +30,22 @@ class ModelTrainer:
     def initiate_model_trainer(self, train_array, test_array):
         try:
             logging.info("Split training and test input data")
+            
             X_train,y_train,X_test,y_test=(
                 train_array[:,:-1],
                 train_array[:,-1],
                 test_array[:,:-1],
                 test_array[:,-1]
             )
+
             models = {
                 "Random Forest": RandomForestRegressor(),
                 "Decision Tree": DecisionTreeRegressor(),
                 "Gradient Boosting": GradientBoostingRegressor(),
                 "Linear Regression": LinearRegression(),
-                "K-Neighbors Classifier": KNeighborsRegressor(),
-                "XGBClassifier": XGBRegressor(),
-                "CatBoosting Classifier": CatBoostRegressor(verbose=False),
-                "AdaBoost Classifier": AdaBoostRegressor(),
+                "XGBRegressor": XGBRegressor(),
+                "CatBoosting Regressor": CatBoostRegressor(verbose=False),
+                "AdaBoost Regressor": AdaBoostRegressor(),
             }
 
             params={
